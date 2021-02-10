@@ -16,15 +16,28 @@ const Home = () => {
     { title: "Lorem ipsum dolores aloha", completed: "false", id: 8 },
     { title: "Lorem ipsum Dolores Aloha IHS", completed: "true", id: 9 },
   ]);
-  //Click handlers
+
+  //Click handler
 
   const handleClick = (e) => {
-    const currentTask = tasks.filter(
+    let currentTask = tasks.filter(
       (task) => task.id.toString() === e.target.id
     );
+    const stateWithoutCurrentTask = tasks.filter(
+      (task) => task.id.toString() !== e.target.id
+    );
+    currentTask = currentTask[0];
     if (currentTask.completed === "false") {
-      setTasks((currentTask.completed = "inProgress"));
+      currentTask.completed = "inProgress";
+      setTasks([...stateWithoutCurrentTask, currentTask]);
+    } else if (currentTask.completed === "inProgress") {
+      currentTask.completed = "true";
+      setTasks([...stateWithoutCurrentTask, currentTask]);
+    } else if (currentTask.completed === "true") {
+      setTasks([...stateWithoutCurrentTask]);
     }
+
+    console.log(tasks);
   };
   //DISPLAY *********************
 
@@ -41,9 +54,8 @@ const Home = () => {
     { title: "Completed", completed: "true", tasks: completedTasks },
   ];
   const displayContainters = containerType.map((container) => (
-    <div className="col-md p-3">
+    <div key={container.id} className="col-md p-3">
       <TaskContainer
-        key={container.title}
         title={container.title}
         tasks={container.tasks}
         click={handleClick}
