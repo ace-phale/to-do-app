@@ -4,6 +4,9 @@
 .task {
   background-color: #fffad6;
 }
+.task-completed {
+  background-color: lightgray;
+}
 .home {
   background: linear-gradient(0deg, #fffded 70%, #483c46 50%);
 }

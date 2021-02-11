@@ -1,20 +1,45 @@
 import TaskContainer from "../Components/TaskContainer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import NavBar from "../Components/NavBar.js";
 const Home = () => {
   //HOOKS **********************
 
   const [tasks, setTasks] = useState([
     //three states are needed, using string instead of boolean
-    { title: "Eat out", completed: "false", id: 1 },
-    { title: "Grab a drink", completed: "true", id: 2 },
-    { title: "Play with a cat", completed: "inProgress", id: 3 },
-    { title: "Lorem ipsum", completed: "false", id: 4 },
-    { title: "Lorem ipsum dolores aloha", completed: "true", id: 5 },
-    { title: "Lorem ipsum Dolores Aloha IHS", completed: "inProgress", id: 6 },
-    { title: "Lorem ipsum", completed: "inProgress", id: 7 },
-    { title: "Lorem ipsum dolores aloha", completed: "false", id: 8 },
-    { title: "Lorem ipsum Dolores Aloha IHS", completed: "true", id: 9 },
+    // { title: "Eat out", completed: "false", id: 1, isImportant: false },
+    // { title: "Grab a drink", completed: "true", id: 2, isImportant: false },
+    // {
+    //   title: "Play with a cat",
+    //   completed: "inProgress",
+    //   id: 3,
+    //   isImportant: false,
+    // },
+    // { title: "Lorem ipsum", completed: "false", id: 4, isImportant: true },
+    // {
+    //   title: "Lorem ipsum dolores aloha",
+    //   completed: "true",
+    //   id: 5,
+    //   isImportant: false,
+    // },
+    // {
+    //   title: "Lorem ipsum Dolores Aloha IHS",
+    //   completed: "inProgress",
+    //   id: 6,
+    //   isImportant: false,
+    // },
+    // { title: "Lorem ipsum", completed: "inProgress", id: 7, isImportant: true },
+    // {
+    //   title: "Lorem ipsum dolores aloha",
+    //   completed: "false",
+    //   id: 8,
+    //   isImportant: true,
+    // },
+    // {
+    //   title: "Lorem ipsum Dolores Aloha IHS",
+    //   completed: "true",
+    //   id: 9,
+    //   isImportant: true,
+    // },
   ]);
 
   //Click handler
@@ -36,8 +61,15 @@ const Home = () => {
     } else if (currentTask.completed === "true") {
       setTasks([...stateWithoutCurrentTask]);
     }
-
-    console.log(tasks);
+  };
+  const handleAddTask = (text, isImportant) => {
+    const newTask = {
+      title: text,
+      completed: "false",
+      id: Math.random(),
+      isImportant: isImportant,
+    };
+    setTasks([...tasks, newTask]);
   };
   //DISPLAY *********************
 
@@ -54,7 +86,7 @@ const Home = () => {
     { title: "Completed", completed: "true", tasks: completedTasks },
   ];
   const displayContainters = containerType.map((container) => (
-    <div key={container.id} className="col-md p-3">
+    <div key={container.id} className="col-lg p-3">
       <TaskContainer
         title={container.title}
         tasks={container.tasks}
@@ -63,9 +95,19 @@ const Home = () => {
     </div>
   ));
 
+  //gets state from localstorage
+  useEffect(() => {
+    setTasks(JSON.parse(localStorage.getItem("tasks")));
+  }, []);
+  //sets state in localstorage on every component rerender
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  });
+
   return (
     <div className="home container-fluid text-lowercase">
-      <NavBar />
+      <div className="row spacer" style={{ minHeight: "12px" }}></div>
+      <NavBar handleAddTask={handleAddTask} />
       <div className="row px-5">{displayContainters}</div>
     </div>
   );
