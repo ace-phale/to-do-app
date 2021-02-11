@@ -21,25 +21,27 @@ const Task = (props) => {
             <button
               id={task.id}
               onClick={props.click}
+              style={{ height: "100%" }}
               className="btn btn-success btn-md float-right">
-              ->
+              <i class="fas fa-arrow-right"></i>
             </button>
           ) : null}
           {task.completed === "inProgress" ? (
             <button
               id={task.id}
               onClick={props.click}
+              style={{ height: "100%" }}
               className="btn btn-success btn-md float-right">
-              ->
+              <i class="fas fa-arrow-right"></i>
             </button>
           ) : null}
           {task.completed === "true" ? (
             <button
               id={task.id}
               onClick={props.click}
+              style={{ height: "100%" }}
               className="btn btn-danger btn-md float-right">
-              {" "}
-              X{" "}
+              <i class="fas fa-times"></i>
             </button>
           ) : null}
         </div>

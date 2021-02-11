@@ -15,18 +15,19 @@ const NavBar = (props) => {
 
   return (
     <div className="row p-5">
-      <div className="col-2"></div>
-      <div className="col-7">
-        <div className="input-group input-group-lg">
+      <div className="col-lg-2"></div>
+      <div className="col-lg-7">
+        <div className="input-group input-group-lg flex-nowrap m-2">
           <input
             type="text"
             className="form-control"
             placeholder="enter new task"
+            maxLength="70"
             value={inputText}
             onChange={handleInputText}
           />
           <div className="input-group-prepend">
-            <span className="input-group-text">is it important?</span>
+            <span className="input-group-text small">is it important?</span>
             <div className="input-group-text">
               <input
                 type="checkbox"
@@ -38,14 +39,14 @@ const NavBar = (props) => {
         </div>
       </div>
 
-      <div className="col-3  ">
+      <div className="col-lg-3">
         <button
           onClick={() => {
             props.handleAddTask(inputText, isImportant);
             setIsImportant(false);
             setInputText("");
           }}
-          className="btn btn-success btn-lg ">
+          className="btn btn-success m-2 btn-lg ">
           add task
         </button>
       </div>

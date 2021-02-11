@@ -46,10 +46,10 @@ const Home = () => {
 
   const handleClick = (e) => {
     let currentTask = tasks.filter(
-      (task) => task.id.toString() === e.target.id
+      (task) => task.id.toString() === e.currentTarget.id
     );
     const stateWithoutCurrentTask = tasks.filter(
-      (task) => task.id.toString() !== e.target.id
+      (task) => task.id.toString() !== e.currentTarget.id
     );
     currentTask = currentTask[0];
     if (currentTask.completed === "false") {
