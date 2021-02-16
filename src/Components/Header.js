@@ -35,6 +35,7 @@ const Header = (props) => {
       <Row className="px-2 mt-2 mb-2  flex">
         <Col className="mt-3 pr-sm-2">
           <Form.Control
+            className="shadow"
             maxLength="60"
             value={inputText}
             onChange={handleInputText}
@@ -45,7 +46,7 @@ const Header = (props) => {
         <Col sm="auto" className="mt-3 pl-sm-2">
           <InputGroup
             size="lg"
-            className="justify-content-md-end justify-content-center flex-fill">
+            className="shadow justify-content-md-end justify-content-center flex-fill">
             <InputGroup.Prepend className="flex-fill">
               <InputGroup.Text className="flex-fill">
                 is it important?

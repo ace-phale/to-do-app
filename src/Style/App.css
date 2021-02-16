@@ -3,6 +3,7 @@
 }
 .task {
   background-color: #fffad6;
+  color: #483c46;
 }
 .task-completed {
   background-color: lightgray;
@@ -16,4 +17,10 @@
 }
 .addButton {
   background-color: #69995d;
+}
+.task-hover:hover .task-title {
+  color: black;
+  transform: translateX(12px);
+
+  transition: 0.3s;
 }

@@ -5,9 +5,11 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 
-const importantStyle = "task-important p-2 font-weight-bold";
-const unImportantStyle = "task p-2";
-const completedStyle = "task-completed p-2 font-weight-light";
+const importantStyle =
+  "task-important task-hover p-2 font-weight-bold shadow  ";
+const unImportantStyle = "task task-hover p-2 shadow  ";
+const completedStyle =
+  "task-completed task-hover p-2 font-weight-light shadow  ";
 
 const Task = (props) => {
   const TaskButton = (task) => (
@@ -17,8 +19,8 @@ const Task = (props) => {
       style={{ height: "100%" }}
       className={
         task.completed === "true"
-          ? "btn btn-danger btn-md float-right"
-          : "btn btn-success btn-md float-right"
+          ? "btn btn-danger btn-md float-right shadow"
+          : "btn btn-success btn-md float-right shadow"
       }>
       <i
         className={
@@ -39,7 +41,7 @@ const Task = (props) => {
         }
         key={task.id}>
         <Row className="p-1">
-          <Col className="align-self-center">{task.title}</Col>
+          <Col className="align-self-center task-title">{task.title}</Col>
           <Col>{TaskButton(task)}</Col>
         </Row>
       </ListGroup.Item>

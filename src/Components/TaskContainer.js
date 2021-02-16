@@ -6,11 +6,11 @@ import ListGroup from "react-bootstrap/ListGroup";
 
 const TaskContainer = (props) => {
   return (
-    <Card className="taskContainer">
+    <Card className="taskContainer shadow-lg">
       <Card.Body>
         <Card.Title className="h5 p-2">{props.title}</Card.Title>
         <hr />
-        <ListGroup>
+        <ListGroup className="rounded shadow-lg">
           <TaskList
             title={props.title}
             tasks={props.tasks}
