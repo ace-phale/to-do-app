@@ -21,7 +21,7 @@ const TaskList = (props) => {
     props.tasks.length > 0 ? (
       <Task tasks={props.tasks} click={props.click} />
     ) : (
-      <h2 className="text-center">{noTasksMessage}</h2>
+      <h2 className="text-center ">{noTasksMessage}</h2>
     );
 
   return <div>{taskList}</div>;

@@ -10,7 +10,7 @@ const TaskContainer = (props) => {
       <Card.Body>
         <Card.Title className="h5 p-2">{props.title}</Card.Title>
         <hr />
-        <ListGroup className="rounded shadow-lg">
+        <ListGroup className="rounded">
           <TaskList
             title={props.title}
             tasks={props.tasks}
