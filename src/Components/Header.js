@@ -40,6 +40,7 @@ const Header = (props) => {
               <InputGroup.Text>is it important?</InputGroup.Text>
             </InputGroup.Prepend>
             <InputGroup.Checkbox
+              style={{ width: "20px", height: "20px" }}
               checked={isImportant}
               onChange={handleCheckbox}
             />
