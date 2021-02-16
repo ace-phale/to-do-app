@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import NavBar from "react-bootstrap/NavBar";
+
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
-import Container from "react-bootstrap/Container";
+
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+
 const Header = (props) => {
   //state to control input values
   const [inputText, setInputText] = useState("");
@@ -18,21 +19,30 @@ const Header = (props) => {
   const handleCheckbox = (e) => {
     setIsImportant(!isImportant);
   };
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    if (inputText.length < 1) {
+      alert("Enter your task before adding it!");
+    } else {
+      props.handleAddTask(inputText, isImportant);
+      setIsImportant(false);
+      setInputText("");
+    }
+  };
 
   return (
-    <Row className="px-2 mt-2 mb-2  flex">
-      <Col className="mt-3">
-        <Form>
+    <Form onSubmit={handleFormSubmit}>
+      <Row className="px-2 mt-2 mb-2  flex">
+        <Col className="mt-3 pr-sm-2">
           <Form.Control
+            maxLength="60"
             value={inputText}
             onChange={handleInputText}
             size="lg"
             placeholder="enter new task here"></Form.Control>
-        </Form>
-      </Col>
+        </Col>
 
-      <Col sm="auto" className="mt-3">
-        <Form>
+        <Col sm="auto" className="mt-3 pl-sm-2">
           <InputGroup
             size="lg"
             className="justify-content-md-end justify-content-center flex-fill">
@@ -49,19 +59,16 @@ const Header = (props) => {
             />
             <InputGroup.Append className="flex-fill">
               <Button
+                type="submit"
                 className="flex-fill"
-                onClick={() => {
-                  props.handleAddTask(inputText, isImportant);
-                  setIsImportant(false);
-                  setInputText("");
-                }}>
+                onClick={handleFormSubmit}>
                 add task
               </Button>
             </InputGroup.Append>
           </InputGroup>
-        </Form>
-      </Col>
-    </Row>
+        </Col>
+      </Row>
+    </Form>
   );
 };
 

@@ -31,6 +31,7 @@ const TaskDisplay = (props) => {
       />
     </Col>
   ));
+
   return <Row className="px-3">{displayContainters}</Row>;
 };
 
