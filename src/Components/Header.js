@@ -35,17 +35,21 @@ const Header = (props) => {
         <Form>
           <InputGroup
             size="lg"
-            className="justify-content-md-end justify-content-center flex-nowrap">
-            <InputGroup.Prepend>
-              <InputGroup.Text>is it important?</InputGroup.Text>
+            className="justify-content-md-end justify-content-center flex-fill">
+            <InputGroup.Prepend className="flex-fill">
+              <InputGroup.Text className="flex-fill">
+                is it important?
+              </InputGroup.Text>
             </InputGroup.Prepend>
+
             <InputGroup.Checkbox
               style={{ width: "20px", height: "20px" }}
               checked={isImportant}
               onChange={handleCheckbox}
             />
-            <InputGroup.Append>
+            <InputGroup.Append className="flex-fill">
               <Button
+                className="flex-fill"
                 onClick={() => {
                   props.handleAddTask(inputText, isImportant);
                   setIsImportant(false);

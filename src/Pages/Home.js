@@ -34,13 +34,17 @@ const Home = () => {
   };
 
   const handleAddTask = (text, isImportant) => {
-    const newTask = {
-      title: text,
-      completed: "false",
-      id: Math.random(),
-      isImportant: isImportant,
-    };
-    setTasks([...tasks, newTask]);
+    if (text.length < 1) {
+      alert("Enter your task before adding it!");
+    } else {
+      const newTask = {
+        title: text,
+        completed: "false",
+        id: Math.random(),
+        isImportant: isImportant,
+      };
+      setTasks([...tasks, newTask]);
+    }
   };
 
   //gets state from localstorage
