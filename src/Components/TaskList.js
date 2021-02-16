@@ -1,8 +1,5 @@
 import React from "react";
 import Task from "./Task.js";
-import ListGroup from "react-bootstrap/ListGroup";
-
-import Badge from "react-bootstrap/Badge";
 
 const TaskList = (props) => {
   //messages shown when there is no task in container
