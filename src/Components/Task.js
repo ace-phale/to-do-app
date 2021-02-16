@@ -1,53 +1,50 @@
 import React from "react";
 
-const importantStyle = "list-group-item task p-2 font-weight-bold";
-const unImportantStyle = "list-group-item task p-2";
-const completedStyle = "list-group-item task-completed p-2 font-weight-light";
+import ListGroup from "react-bootstrap/ListGroup";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
+
+const importantStyle = "task-important p-2 font-weight-bold";
+const unImportantStyle = "task p-2";
+const completedStyle = "task-completed p-2 font-weight-light";
+
 const Task = (props) => {
-  const displayTaskList = props.tasks.map((task) => (
-    <li
+  const TaskButton = (task) => (
+    <Button
+      id={task.id}
+      onClick={props.click}
+      style={{ height: "100%" }}
       className={
         task.completed === "true"
-          ? completedStyle
-          : task.isImportant
-          ? importantStyle
-          : unImportantStyle
-      }
-      key={task.id}>
-      <div className="row p-1">
-        <div className="col-8 align-self-center">{task.title}</div>
-        <div className="col-4">
-          {task.completed === "false" ? (
-            <button
-              id={task.id}
-              onClick={props.click}
-              style={{ height: "100%" }}
-              className="btn btn-success btn-md float-right">
-              <i class="fas fa-arrow-right"></i>
-            </button>
-          ) : null}
-          {task.completed === "inProgress" ? (
-            <button
-              id={task.id}
-              onClick={props.click}
-              style={{ height: "100%" }}
-              className="btn btn-success btn-md float-right">
-              <i class="fas fa-arrow-right"></i>
-            </button>
-          ) : null}
-          {task.completed === "true" ? (
-            <button
-              id={task.id}
-              onClick={props.click}
-              style={{ height: "100%" }}
-              className="btn btn-danger btn-md float-right">
-              <i class="fas fa-times"></i>
-            </button>
-          ) : null}
-        </div>
-      </div>
-    </li>
-  ));
+          ? "btn btn-danger btn-md float-right"
+          : "btn btn-success btn-md float-right"
+      }>
+      <i
+        className={
+          task.completed === "true" ? "fas fa-times" : "fas fa-arrow-right"
+        }></i>
+    </Button>
+  );
+
+  const displayTaskList = props.tasks.map((task) => {
+    return (
+      <ListGroup.Item
+        className={
+          task.completed === "true"
+            ? completedStyle
+            : task.isImportant
+            ? importantStyle
+            : unImportantStyle
+        }
+        key={task.id}>
+        <Row className="p-1">
+          <Col className="align-self-center">{task.title}</Col>
+          <Col>{TaskButton(task)}</Col>
+        </Row>
+      </ListGroup.Item>
+    );
+  });
   return displayTaskList;
 };
 

@@ -7,6 +7,10 @@
 .task-completed {
   background-color: lightgray;
 }
+.task-important {
+  background-color: #f5c6cb;
+  color: #721c24;
+}
 .home {
   background: linear-gradient(0deg, #fffded 70%, #483c46 50%);
 }

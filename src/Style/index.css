@@ -12,11 +12,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-div {
-}
+
 .root {
   min-height: 100vh;
 }
 .home {
   min-height: 100vh;
+}
+.spacer {
+  min-height: 12px;
 }
